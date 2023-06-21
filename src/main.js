@@ -1,8 +1,6 @@
 import * as THREE from '../orbit_controls/three.module.js';
 import { OrbitControls } from '../orbit_controls/orbitcontrols.js';
 
-
-
 // Creo escena,camara.
 const scene = new THREE.Scene();
 
@@ -44,7 +42,16 @@ camera.position.z = 5;
 camera.position.y = -10;
 camera.rotation.x = 1;
 
+// Control de órbita
 const controls = new OrbitControls(camera, renderer.domElement);
+controls.enableZoom = true; // Para poder o no hacer zoom
+// controls.minDistance = 1; 
+// controls.maxDistance = 15; // Se puede hacer zoom en ese rango min-max
+
+controls.screenSpacePanning = true; // False = No puedo arrastrar con el cursor
+
+controls.enableDamping = true; // False = no aplica desaceleración de orbita al mover
+controls.dampingFactor = 0.1; // Rango de aceleración y desaceleración
 
 function animate() {
     requestAnimationFrame( animate);
